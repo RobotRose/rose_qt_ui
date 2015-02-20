@@ -1,0 +1,25 @@
+<launch>
+	<!-- Do mapping argument -->
+    <arg name="mapping" default="false"/> 
+
+    <!-- Do not use machine files argument -->
+    <arg name="sim" default="false"/>
+      
+    <!-- Hardware version -->
+    <arg name="hardware" default="simulation"/>
+
+ 	<node machine="pc1" name="rose_script_manager" pkg="rose_script_manager" type="script_manager.py" output="screen"></node>
+  	<node machine="pc1" name="rose_ui_script_selector" pkg="rose_ui_script_selector" type="rose_ui_script_selector"></node>
+ 	<node machine="pc1" name="rose_ui_item_selector" pkg="rose_ui_item_selector" type="rose_ui_item_selector"></node>
+ 	<node machine="pc1" name="rose_ui_item_collector" pkg="rose_ui_item_collector" type="rose_ui_item_collector"></node>
+ 	<node machine="pc1" name="rose_ui_text_selector" pkg="rose_ui_text_selector" type="rose_ui_text_selector"></node>
+ 	<node machine="pc1" name="rose_ui_connection_monitor" pkg="rose_ui_connection_monitor" type="rose_ui_connection_monitor"></node>
+ 	<node machine="pc1" name="rose_ui_overview_camera" pkg="rose_ui_overview_camera" type="rose_ui_overview_camera"></node>
+ 	<node machine="pc1" name="rose_ui_manual_arm_control" pkg="rose_ui_manual_arm_control" type="rose_ui_manual_arm_control"></node>
+ 	<node machine="pc1" name="rose_ui_map_display" pkg="rose_ui_map_display" type="rose_ui_map_display"></node>
+    <node machine="pc1" name="point_extractor" pkg="point_extractor" type="point_extractor"></node>
+ 	<!-- node machine="pc1" pkg="tf" type="static_transform_publisher" name="base_link_map_transform" args="0.0 0 0.02 0 0 0 /map /base_link 100"/> -->
+ 	<node machine="pc1" name="view_operator" pkg="rose_gui_application" type="view_operator.sh"></node>
+
+    <include file="$(find rose_gui_application)/launch/audio_rose_side.launch"/>
+</launch>

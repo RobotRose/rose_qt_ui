@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/next.png</file>
+        <file>resources/previous.png</file>
+        <file>resources/rose.png</file>
+        <file>resources/rose_toplogo.png</file>
+        <file>resources/pwr.png</file>
+        <file>resources/32x32_ico_egg.png</file>
+        <file>resources/32x32_ico_mok.png</file>
+        <file>resources/32x32_ico_weight.png</file>
+        <file>resources/gripperclosed.png</file>
+        <file>resources/gripperopen.png</file>
+        <file>resources/gripperpressure.png</file>
+        <file>resources/downArrow.png</file>
+        <file>resources/upArrow.png</file>
+        <file>resources/leftArrow.png</file>
+        <file>resources/rightArrow.png</file>
+        <file>resources/rotateLeft.png</file>
+        <file>resources/rotateRight.png</file>
+        <file>resources/stopMovement.png</file>
+        <file>resources/arrowhead-right.png</file>
+        <file>resources/webcam.png</file>
+        <file>resources/mic.png</file>
+        <file>resources/microphone.png</file>
+        <file>resources/microphone--minus.png</file>
+        <file>resources/microphone--plus.png</file>
+        <file>resources/webcam--minus.png</file>
+        <file>resources/webcam--strikethrough.png</file>
+        <file>resources/microphone--strikethrough.png</file>
+    </qresource>
+</RCC>

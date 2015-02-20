@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Exec=bash -c "roscd rose_gui_application && ./launch/rose_operator.sh"
+Name[en_US]=Rose GUI
+Comment[en_US]=Start Rose GUI
+Name=Rose GUI
+Comment=Start Rose GUI
+

@@ -1,0 +1,3 @@
+<launch>
+    <node name="twinkle_audio_link" pkg="rose_gui_application" type="start_twinkle_operator.sh"/>
+</launch>

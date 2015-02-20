@@ -1,0 +1,14 @@
+<launch>
+	<param name="application_name" value="rose_gui_application" />
+
+ 	<node name="$(anon application_name)" pkg="rose_gui_application" type="rose_gui_application_node" output="screen"
+        args="/joystick_teleop_interpreter/mode:=/thrustmaster/joystick_teleop_interpreter/mode /joystick_teleop_interpreter/available_modes:=/thrustmaster/joystick_teleop_interpreter/available_modes /joystick_teleop_interpreter/set_mode:=/thrustmaster/joystick_teleop_interpreter/set_mode">
+        <!--Because each joystick teleop now runs in its own namespace, we have to remap the services and topics in the namespace to a non-namespaces name.-->
+        <param name="image_transport" value="theora"/>
+
+ 	</node>
+    
+    <include file="$(find rose_gui_application)/launch/audio_operator_side.launch"/>
+    <include file="$(find rose_joystick)/launch/thrustmaster.launch"/>
+    <include file="$(find rose_joystick)/launch/gui_arrows.launch"/>
+</launch>

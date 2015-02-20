@@ -1,0 +1,617 @@
+<?xml version="1.0"?>
+<information>
+
+	<component id="UserCockpit">
+
+		<item id="CustomerDataBase" type="string" value="/resources/database/tsr.sqlite"/>
+		<item id="RosNodeName" type="string" value="user_interface"/>
+
+	</component>
+
+	<component id="HeartBeat">
+
+		<item id="Topic" type="string" value="/HeartBeat"/>
+
+	</component>
+
+	<component id="BatteryMonitor">
+
+		<component id="Level">
+			<item id="Topic" type="string" value="/power_controller/combined_battery/state"/>
+		</component>
+
+	</component>
+
+	<component id="Voice">
+
+		<component id="Operator">
+			<item id="Topic" type="string" value="/OperatorVoice"/>
+		</component>
+
+		<component id="Customer">
+			<item id="Topic" type="string" value="/CustomerVoice"/>
+		</component>
+
+	</component>
+
+	<component id="Cameras">
+
+		<component id="Operator">
+			<item id="Enabled" type="bool" value="false"/>
+			<item id="DeviceName" type="string" value="/dev/video0"/>
+			<!-- <item id="DeviceName" type="string" value="/dev/video2"/> -->
+			<item id="Topic" type="string" value="/cameraOperator/image/"/>
+			<!-- <item id="Topic" type="string" value="/cockpit_image/"/> -->
+			<!-- <item id="Topic" type="string" value="/RAW_LIMAGE/"/> -->
+		</component>
+
+		<component id="Overview">
+            <!-- <item id="Topic" type="string" value="/RAW_LIMAGE/"/> -->
+            <!-- <item id="Topic" type="string" value="/cockpit_image/compressed"/> -->
+            <item id="Topic" type="string" value="/camera/rgb/image_color"/>
+		</component>
+
+		<component id="LeftHand">
+			<item id="Topic" type="string" value="/cameraLeftHand/image"/>
+		</component>
+
+		<component id="RightHand">
+			<item id="Topic" type="string" value="/cameraRightHand/image"/>
+		</component>
+
+	</component>
+
+	<component id="Head">
+
+		<component id="PanMotor">
+
+			<item id="StateTopic" type="string" value="/neck_pan_controller/state"/>
+			<item id="CommandTopic" type="string" value="/neck_pan_controller/command"/>
+
+			<item id="Step" type="double" value="5"/>
+			<item id="StepMin" type="double" value="1"/>
+			<item id="StepMax" type="double" value="50"/>
+
+			<item id="HomePosition" type="double" value="0"/>
+		</component>
+
+		<component id="TiltMotor">
+
+			<item id="StateTopic" type="string" value="/neck_tilt_controller/state"/>
+			<item id="CommandTopic" type="string" value="/neck_tilt_controller/command"/>
+
+			<item id="Step" type="double" value="5"/>
+			<item id="StepMin" type="double" value="1"/>
+			<item id="StepMax" type="double" value="50"/>
+
+			<item id="HomePosition" type="double" value="-0.35"/>
+		</component>
+
+	</component>
+
+	<component id="SensorRing">
+
+		<item id="Topic" type="string" value="/SensorRing/SensorValues"/>
+
+		<item id="SensorCount_left" type="int" value="2" />
+		<item id="SensorCount_right" type="int" value="2" />
+		<item id="SensorCount_front" type="int" value="2" />
+		<item id="SensorCount_rear" type="int" value="2" />
+
+		<item id="MinRange_cm" type="int" value="0" />
+		<item id="MaxRange_cm" type="int" value="100" />
+
+	</component>
+
+	<component id="Warning">
+
+		<component id="Larm">
+
+			<item id="Topic" type="string" value="/rose/larm_warn"/>
+
+		</component>
+
+		<component id="Platform">
+
+			<item id="Topic" type="string" value="/rose/platform_warn"/>
+
+		</component>
+
+		<component id="Rarm">
+
+			<item id="Topic" type="string" value="/rose/rarm_warn"/>
+
+		</component>
+
+	</component>
+
+	<component id="1ArmAutonomous">
+
+                <item id="Topic" type="string" value="/goal_sender_mode"/>
+
+		<component id="Button10">
+
+                        <item id="Label" type="string" value="Grab L"/>
+                        <item id="Value" type="int"    value="32"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button11">
+
+                        <item id="Label" type="string" value="Place L"/>
+                        <item id="Value" type="int"    value="53"/>
+                        <item id="Enabled" type="bool" value="true"/>
+		</component>
+
+		<component id="Button12">
+
+			<item id="Label" type="string" value="Clean L"/>
+                        <item id="Value" type="int"    value="9032"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button21">
+
+			<item id="Label" type="string" value="Place R"/>
+                        <item id="Value" type="int"    value="52"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button13">
+
+			<item id="Label" type="string" value="Open L"/>
+                        <item id="Value" type="int"    value="42"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button14">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="114"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button15">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="115"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button16">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="116"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button17">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="117"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button18">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="118"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button19">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="119"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button22">
+
+			<item id="Label" type="string" value="Clean R"/>
+                        <item id="Value" type="int"    value="9031"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button20">
+
+			<item id="Label" type="string" value="Grab R"/>
+                        <item id="Value" type="int"    value="31"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button23">
+
+			<item id="Label" type="string" value="Pour R"/>
+                        <item id="Value" type="int"    value="21"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button24">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="124"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button25">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="125"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button26">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="126"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button27">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="127"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button28">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="128"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button29">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="129"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button30">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="222"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button31">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="222"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button32">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="222"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button33">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="223"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button34">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="224"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button35">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="225"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button36">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="226"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button37">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="227"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button38">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="228"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button39">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="229"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+	</component>
+
+	<component id="2ArmAutonomous">
+
+                <item id="Topic" type="string" value="/goal_sender_mode"/>
+
+		<component id="Button10">
+                        <item id="Label" type="string" value="Grab"/>
+                        <item id="Value" type="int"    value="50"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button20">
+                        <item id="Label" type="string" value="Place"/>
+                        <item id="Value" type="int"    value="51"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button11">
+
+			<item id="Label" type="string" value="Handover L-R"/>
+                        <item id="Value" type="int"    value="62"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button21">
+
+			<item id="Label" type="string" value="Handover R-L"/>
+                        <item id="Value" type="int"    value="61"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button13">
+
+			<item id="Label" type="string" value="Flip Hor. "/>
+                        <item id="Value" type="int"    value="500"/>
+			<item id="Enabled" type="bool" value="true"/>
+
+		</component>
+
+		<component id="Button14">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="214"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button15">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="215"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button16">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="216"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button17">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="217"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button18">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="218"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button19">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="219"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button12">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="221"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button22">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="222"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button23">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="223"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button24">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="6453"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button25">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="225"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button26">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="226"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button27">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="227"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button28">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="228"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button29">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="229"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button30">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="222"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button31">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="222"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button32">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="222"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button33">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="223"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button34">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="224"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button35">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="225"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button36">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="226"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button37">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="227"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button38">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="228"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+		<component id="Button39">
+
+			<item id="Label" type="string" value=""/>
+                        <item id="Value" type="int"    value="229"/>
+			<item id="Enabled" type="bool" value="false"/>
+
+		</component>
+
+	</component>
+
+</information>
