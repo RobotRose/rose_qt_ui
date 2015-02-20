@@ -17,7 +17,7 @@
  	<node machine="pc1" name="rose_ui_overview_camera" pkg="rose_ui_overview_camera" type="rose_ui_overview_camera"></node>
  	<node machine="pc1" name="rose_ui_manual_arm_control" pkg="rose_ui_manual_arm_control" type="rose_ui_manual_arm_control"></node>
  	<node machine="pc1" name="rose_ui_map_display" pkg="rose_ui_map_display" type="rose_ui_map_display"></node>
-    <node machine="pc1" name="point_extractor" pkg="point_extractor" type="point_extractor"></node>
+    <node machine="pc1" name="rose_point_extractor" pkg="rose_point_extractor" type="rose_point_extractor"></node>
  	<!-- node machine="pc1" pkg="tf" type="static_transform_publisher" name="base_link_map_transform" args="0.0 0 0.02 0 0 0 /map /base_link 100"/> -->
  	<node machine="pc1" name="view_operator" pkg="rose_gui_application" type="view_operator.sh"></node>
 
