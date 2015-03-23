@@ -11,4 +11,6 @@
     <include file="$(find rose_gui_application)/launch/audio_operator_side.launch"/>
     <include file="$(find rose_joystick)/launch/thrustmaster.launch"/>
     <include file="$(find rose_joystick)/launch/gui_arrows.launch"/>
+
+    <include file="$(find rose_system_validation)/launch/cockpit_side.launch"/>
 </launch>
