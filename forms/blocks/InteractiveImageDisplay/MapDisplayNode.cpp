@@ -178,7 +178,10 @@ const std::vector< std::tuple<float, float, float, float, QString> > MapDisplayN
 
 bool MapDisplayNode::isKnownLocation(int x, int y)
 {
-    return ( mapimg.pixel(x,y) != unknownspace );
+    syncroot.lock();
+    bool known = mapimg.pixel(x,y) != unknownspace;
+    syncroot.unlock();
+    return known;
 }
 
 void MapDisplayNode::drawRobotFootprint(QImage &img, QPolygonF footprint)
