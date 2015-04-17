@@ -143,8 +143,7 @@ void MapDisplay::mouseReleaseEvent(QMouseEvent *event)
             if( pTransformed.x() >= 0 &&
                 pTransformed.y() >= 0 &&
                 pTransformed.x() < m_CurMap.width() &&
-                pTransformed.y() < m_CurMap.height() &&
-                m_MapDisplayNode.isKnownLocation(pTransformed.x(), pTransformed.y()))
+                pTransformed.y() < m_CurMap.height())
             {
                 //Convert the scaled map pixels to full map pixels to meters
                 QPoint pScaled = m_MapDisplayNode.transformScaledPixelsToFullPixels(pTransformed);         
@@ -211,7 +210,6 @@ void MapDisplay::mouseReleaseEvent(QMouseEvent *event)
             delete arrowLine2;
             this->scene()->removeItem(ellipse);
             delete ellipse;
-
         }
     }
 }
