@@ -73,7 +73,7 @@ public:
      * @param subtitle Subtitle text
      * @param color    Color in which to draw the text
      */
-    void setSubtitle(string subtitle, QColor color, int secondsVisible=10);
+    void setSubtitle(string subtitle, QColor color, int seconds_visible=10, int min_seconds_visible=0);
     string getSubtitle();
 
 protected:
@@ -95,7 +95,10 @@ private:
     int m_Height;
     QString m_subtitle;
     QColor m_subtitle_color;
-    QTime m_show_subtitle_until;
+
+    QTime   subtitle_time_stamp_;
+    int     subtitle_timeout_;
+    int     subtitle_min_show_time_;
 };
 
 #endif /* IMAGEDISPLAY_HPP */

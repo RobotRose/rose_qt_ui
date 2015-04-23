@@ -14,11 +14,16 @@
 
 ImageDisplay::ImageDisplay()
     :QGraphicsObject()
-    ,m_logger(Loggers::LogMaster::Instance()->Get<Loggers::CountingLogger>("ImageDisplay"))
-	,m_Width( IMAGE_WIDTH )
-	,m_Height( IMAGE_HEIGHT )
+    , m_logger(Loggers::LogMaster::Instance()->Get<Loggers::CountingLogger>("ImageDisplay"))
+	, m_Width( IMAGE_WIDTH )
+	, m_Height( IMAGE_HEIGHT )
+    , subtitle_timeout_(0)
+    , subtitle_min_show_time_(0)
+    , subtitle_time_stamp_(QTime::currentTime())
 {
-    m_subtitle = QString();
+    m_subtitle       = QString();
+    m_subtitle_color = Qt::white;
+
     m_data.reserve( IMAGE_WIDTH * IMAGE_HEIGHT * IMAGE_CHANNELS ) ;
     m_image = boost::shared_ptr<QImage>( new QImage( &m_data[0], IMAGE_WIDTH, IMAGE_HEIGHT, QImage::Format_RGB888 ) );
     QPainter p;
@@ -46,10 +51,8 @@ void ImageDisplay::paint( QPainter *painter, const QStyleOptionGraphicsItem *opt
     painter->drawImage( 0, 0, *m_image );
 
     //Only show the subtitle when  it has not timed out.
-    if(QTime::currentTime() < m_show_subtitle_until)
-    {
+    if ( subtitle_time_stamp_.addSecs(subtitle_timeout_) > QTime::currentTime() )
         subtitle(painter, m_subtitle, m_subtitle_color);
-    }
 
     m_mutex.unlock();
 }
@@ -85,20 +88,51 @@ void ImageDisplay::subtitle( QPainter *painter, const QString text, const QColor
     painter->drawText(rect, text, QTextOption(Qt::AlignCenter));
 }
 
-void ImageDisplay::setSubtitle(string subtitle, QColor color, int secondsVisible)
+void ImageDisplay::setSubtitle(string subtitle, QColor color, int seconds_visible, int min_seconds_visible)
 {
     if(subtitle.size() > 42)
-    {
         ROS_WARN_NAMED(ROS_NAME, "Subtitle message '%s' may be too long. Max is 2 lines of ca 21 chars", subtitle.c_str());
+
+    // Check if there is already a subtitle showing
+    bool show_this_subtitle = false;
+    if ( subtitle_time_stamp_.addSecs(subtitle_min_show_time_) < QTime::currentTime() )
+    {
+        // Timeout has passed, subtitle can be updated
+        show_this_subtitle = true;
+    }
+    else
+    {
+        // There is a subtitle, determine if this subtitle is more important
+        // Priorities based on color (since we have nothing else)
+        if ( color == Qt::red ) // Error messages always have highest prio
+            show_this_subtitle = true;
+
+        if ( color == Qt::green )
+            if ( m_subtitle_color != Qt::red ) // Continue if current subtitle is not red
+                show_this_subtitle = true;
+
+        if ( color == Qt::white )
+            if ( m_subtitle_color == Qt::white ) // Continue only if current subtitle is also white
+                show_this_subtitle = true;
     }
 
-    m_subtitle = subtitle.c_str();
-    m_subtitle_color = color;
+    if ( not show_this_subtitle )
+        return;
 
-    //A subtitle must now be shown forever but only until m_show_subtitle_until.
-    //This is the current time + a variable amount of time.
-    m_show_subtitle_until = QTime::currentTime().addSecs(secondsVisible);
-    ROS_DEBUG_NAMED(ROS_NAME, "ImageDisplay::setSubtitle will show subtitle until %s", m_show_subtitle_until.toString().toStdString().c_str());
+    // A subtitle must now be shown forever but only until m_show_subtitle_until.
+    // This is the current time + a variable amount of time.
+    if ( min_seconds_visible > seconds_visible )
+    {
+        ROS_WARN("Minimal show time of subtitle is larger than the required show time: %d, %d. Setting seconds visible to %d", min_seconds_visible, seconds_visible, min_seconds_visible);
+        seconds_visible = min_seconds_visible;
+    }
+
+    m_subtitle              = subtitle.c_str();
+    m_subtitle_color        = color;
+
+    subtitle_time_stamp_    = QTime::currentTime();
+    subtitle_timeout_       = seconds_visible;
+    subtitle_min_show_time_ = min_seconds_visible;
 }
 
 string ImageDisplay::getSubtitle()
