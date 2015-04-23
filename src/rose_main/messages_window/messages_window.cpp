@@ -18,7 +18,7 @@ MessagesWindow::MessagesWindow( QWidget* parent )
     ROS_INFO("MessagesWindow::MessagesWindow");
 
     text_list_ = new QListWidget;
-    text_list_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+    //text_list_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     text_list_->setSelectionMode(QAbstractItemView::NoSelection);
 
     QHBoxLayout* layout = new QHBoxLayout;
