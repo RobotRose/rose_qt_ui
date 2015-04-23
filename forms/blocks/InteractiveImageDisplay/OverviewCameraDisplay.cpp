@@ -184,12 +184,12 @@ void OverviewCameraDisplay::CB_process_gui_message( const std_msgs::String str)
 
 void OverviewCameraDisplay::CB_process_gui_action( const std_msgs::String str)
 {
-    m_OverlayItems.m_ImageDisplay->setSubtitle(str.data, Qt::green);
+    m_OverlayItems.m_ImageDisplay->setSubtitle(str.data, Qt::green, 10, 2);
 }
 
 void OverviewCameraDisplay::CB_process_gui_warn( const std_msgs::String str)
 {
-    m_OverlayItems.m_ImageDisplay->setSubtitle(str.data, Qt::red);
+    m_OverlayItems.m_ImageDisplay->setSubtitle(str.data, Qt::red, 10, 2);
 }
 
 void OverviewCameraDisplay::drawBoundingBoxes()
